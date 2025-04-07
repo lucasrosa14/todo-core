@@ -1,7 +1,5 @@
 package org.acme.components.todo.data.usecases.create;
 
-import org.acme.components.todo.data.repositories.ITodoRepository;
-import org.acme.components.todo.domain.entity.Todo;
 import org.acme.components.todo.domain.usecases.ICreateTodo;
 import org.acme.components.todo.domain.usecases.ICreateTodo.Input;
 import org.acme.components.todo.domain.usecases.ICreateTodo.Output;
