@@ -20,15 +20,15 @@ public class CreateTodo implements ICreateTodo{
         Todo todo = Todo.createDefaulTodo(input.name(), limitDate);
 
         if (! todo.isValid()) {
-            return new Output("Invalid todo");
+            return new Output("Invalid todo", todo);
         }
 
         Todo createdTodo = this.todoRepository.insertTodo(todo);
         
         if (createdTodo.isCorrectlyInserted()) {
-            return new Output("Todo created");
+            return new Output("Todo created - Id " + createdTodo.getId(), createdTodo);
         } else {
-            return new Output("Error creating todo");
+            return new Output("Error creating todo", todo);
         }
     }
     

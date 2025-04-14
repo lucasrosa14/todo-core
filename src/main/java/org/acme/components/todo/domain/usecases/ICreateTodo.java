@@ -1,5 +1,7 @@
 package org.acme.components.todo.domain.usecases;
 
+import org.acme.components.todo.domain.entity.Todo;
+
 public interface ICreateTodo {
 
     Output execute(Input input);
@@ -10,6 +12,7 @@ public interface ICreateTodo {
     ) {}
 
     public record Output(
-        String message
+        String message,
+        Todo todo
     ) {}
 }

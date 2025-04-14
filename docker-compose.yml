@@ -1,0 +1,25 @@
+services:
+  todo-mongo:
+    image: mongo:latest
+    container_name: todo-mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-volume:/data/db
+    networks:
+      - todo-networks
+    command: ["--noauth"]
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 2048M
+        reservations:
+          cpus: '2.0'
+          memory: 1024M
+
+networks:
+  todo-networks:
+volumes:
+  mongo-volume:
