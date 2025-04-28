@@ -23,7 +23,11 @@ public class MongoTodoRepository implements ITodoRepository, PanacheMongoReposit
 
     @Override
     public List<Todo> listTodos() {
-        throw new UnsupportedOperationException("Unimplemented method 'listTodos'");
+        return this.listAll()
+                   .stream()
+                   .map(MongoTodo::convertToTodo)
+                   .toList();
     }
+
     
 }

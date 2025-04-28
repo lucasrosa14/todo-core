@@ -1,10 +1,13 @@
 package org.acme.web.todo;
 
+import java.util.List;
+
 import org.acme.components.todo.data.repositories.ITodoRepository;
 import org.acme.components.todo.data.usecases.create.CreateTodo;
+import org.acme.components.todo.data.usecases.list.ListTodo;
+import org.acme.components.todo.domain.entity.Todo;
 import org.acme.components.todo.domain.usecases.ICreateTodo;
-import org.acme.components.todo.domain.usecases.ICreateTodo.Input;
-import org.acme.components.todo.domain.usecases.ICreateTodo.Output;
+import org.acme.components.todo.domain.usecases.IListTodo;
 
 public class TodoController {
 
@@ -20,4 +23,14 @@ public class TodoController {
         
         return output.message();
     }
+
+    public List<Todo> listTodo(String id, String name, String limitDate, String done) {
+        IListTodo listTodo = new ListTodo(this.iTodoRepository);
+        IListTodo.Output output = listTodo.execute();
+        
+        return output.todos();
+    }
+    
+
+
 }

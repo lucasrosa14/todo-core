@@ -1,0 +1,24 @@
+services:
+  todo-core:
+    image: todo-core:latest
+    container_name: todo-core
+    ports:
+      - 8081:8081
+    networks:
+      - todo-network
+    command: ["--noauth"]
+    environment:
+      - MONGO_CONNECTION_STRING=${MONGO_CONNECTION_STRING}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 8024M
+        reservations:
+          cpus: '3.0'
+          memory: 8024M
+    restart: on-failure
+
+networks:
+  todo-network:
