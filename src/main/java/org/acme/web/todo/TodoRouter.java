@@ -30,8 +30,8 @@ public class TodoRouter {
     @Path("/list")
     @POST
     @Produces(MediaType.APPLICATION_JSON)  
-    public List<Todo> listTodo(ListTodoInput body) {
-        return this.todoController.listTodo(body.id(), body.name(), body.limitDate(), body.done());
+    public ListTodoOutput listTodo(ListTodoInput body) {
+        return new ListTodoOutput(this.todoController.listTodo(body.id(), body.name(), body.limitDate(), body.done()));
     }
 
     public record CreateTodoInput(
@@ -44,6 +44,10 @@ public class TodoRouter {
         String name, 
         String limitDate,
         String done
+    ) {}
+
+    public record ListTodoOutput(
+        List<Todo> listTodo
     ) {}
     
 }
