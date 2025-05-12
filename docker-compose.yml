@@ -1,15 +1,17 @@
 services:
   todo-mongo:
-    image: mongo:latest
-    container_name: todo-mongo
-    restart: always
+    image: mongo:8.0.9
     ports:
       - 27017:27017
+    container_name: todo-mongo
+    restart: always
     volumes:
       - mongo-volume:/data/db
     networks:
-      - todo-networks
-    command: ["--noauth"]
+      - todo-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: todo
+      MONGO_INITDB_ROOT_PASSWORD: todo-pwd
     deploy:
       resources:
         limits:
@@ -20,6 +22,9 @@ services:
           memory: 1024M
 
 networks:
-  todo-networks:
+  todo-network:
+    external: true
+      
+
 volumes:
   mongo-volume:
