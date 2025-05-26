@@ -26,7 +26,7 @@ public class CreateTodo implements ICreateTodo{
         Todo createdTodo = this.todoRepository.insertTodo(todo);
         
         if (createdTodo.isCorrectlyInserted()) {
-            return new Output("Todo created - Id " + createdTodo.getId(), createdTodo);
+            return new Output("Todo created", createdTodo);
         } else {
             return new Output("Error creating todo", todo);
         }

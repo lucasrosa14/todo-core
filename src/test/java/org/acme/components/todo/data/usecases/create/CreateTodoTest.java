@@ -13,8 +13,8 @@ import jakarta.inject.Inject;
 @QuarkusTest
 class CreateTodoTest {
 
-    @Inject 
-    MemoryTodoRepository todoRepository;
+    
+    MemoryTodoRepository todoRepository = new MemoryTodoRepository();
                 
     @Test
     void testRightExecute() {
